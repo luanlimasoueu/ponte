@@ -12,9 +12,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 O site público não está em Railway/Render — é um **túnel Cloudflare efêmero** apontando para o dev server local:
 
-- `npm run dev` serve `localhost:3000` (rodando em background nesta máquina)
+- `npx next start -p 3000` serve produção em `localhost:3000` (log em `/tmp/next-prod.log`)
 - `cloudflared tunnel --url http://localhost:3000` expõe na URL pública (log em `/tmp/cloudflared.log`)
-- URL ativa: https://camcorder-shirt-sleeve-bouquet.trycloudflare.com
+- URL ativa: https://primarily-compression-personalized-lakes.trycloudflare.com
 - **Morre quando a máquina desliga ou o processo para.** A cada execução o trycloudflare gera URL nova — não dá para reutilizar.
 - Para recriar: `npm run dev` + `cloudflared tunnel --url http://localhost:3000`, pegar a URL nova no log e atualizar `apresentacao/slides.md` (2 menções).
 

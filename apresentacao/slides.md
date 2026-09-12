@@ -13,7 +13,7 @@ title: Ponte — mentoria entre gerações de profissionais
 
 A ponte entre quem já trilhou o caminho e quem está começando.
 
-**Demo ao vivo:** https://camcorder-shirt-sleeve-bouquet.trycloudflare.com
+**Demo ao vivo:** https://primarily-compression-personalized-lakes.trycloudflare.com
 **Código aberto:** github.com/luanlimasoueu/ponte
 
 <!--
@@ -117,7 +117,7 @@ Quadro público onde mentores e empresas publicam:
 
 **Quem tem experiência ensina. Quem está começando mostra. Quem contrata enxerga.**
 
-Demo: https://camcorder-shirt-sleeve-bouquet.trycloudflare.com
+Demo: https://primarily-compression-personalized-lakes.trycloudflare.com
 Código: github.com/luanlimasoueu/ponte
 
 <!-- Nota: adicionar contato / chamada para ação conforme o público da apresentação -->
