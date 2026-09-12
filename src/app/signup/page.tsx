@@ -19,20 +19,20 @@ export default async function SignupPage({
           <div>
             <label className="mb-1 block text-sm font-medium">Eu sou *</label>
             <div className="grid grid-cols-3 gap-2">
-              <label className="flex cursor-pointer flex-col rounded-lg border border-stone-300 p-3 text-sm has-checked:border-violet-500 has-checked:bg-violet-50">
+              <label className="flex cursor-pointer flex-col rounded-md border border-line p-3 text-sm transition-colors has-checked:border-accent has-checked:bg-accent/10">
                 <input type="radio" name="role" value="mentee" required className="sr-only" />
                 <span className="font-medium">Mentorado</span>
-                <span className="text-xs text-stone-500">Inicio ou transicao de carreira</span>
+                <span className="text-xs text-muted">Inicio ou transicao de carreira</span>
               </label>
-              <label className="flex cursor-pointer flex-col rounded-lg border border-stone-300 p-3 text-sm has-checked:border-violet-500 has-checked:bg-violet-50">
+              <label className="flex cursor-pointer flex-col rounded-md border border-line p-3 text-sm transition-colors has-checked:border-accent has-checked:bg-accent/10">
                 <input type="radio" name="role" value="mentor" className="sr-only" />
                 <span className="font-medium">Mentor</span>
-                <span className="text-xs text-stone-500">Profissional experiente</span>
+                <span className="text-xs text-muted">Profissional experiente</span>
               </label>
-              <label className="flex cursor-pointer flex-col rounded-lg border border-stone-300 p-3 text-sm has-checked:border-violet-500 has-checked:bg-violet-50">
+              <label className="flex cursor-pointer flex-col rounded-md border border-line p-3 text-sm transition-colors has-checked:border-accent has-checked:bg-accent/10">
                 <input type="radio" name="role" value="company" className="sr-only" />
                 <span className="font-medium">Empresa</span>
-                <span className="text-xs text-stone-500">Mentora e contrata talentos</span>
+                <span className="text-xs text-muted">Mentora e contrata talentos</span>
               </label>
             </div>
           </div>
@@ -68,9 +68,9 @@ export default async function SignupPage({
             Criar conta
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-stone-500">
+        <p className="mt-4 text-center text-sm text-muted">
           Ja tem conta?{" "}
-          <Link href="/login" className="text-violet-700 hover:underline">
+          <Link href="/login" className="text-accent hover:underline">
             Entrar
           </Link>
         </p>

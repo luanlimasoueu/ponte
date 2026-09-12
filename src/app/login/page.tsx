@@ -28,9 +28,9 @@ export default async function LoginPage({
             Entrar
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-stone-500">
+        <p className="mt-4 text-center text-sm text-muted">
           Ainda nao tem conta?{" "}
-          <Link href="/signup" className="text-violet-700 hover:underline">
+          <Link href="/signup" className="text-accent hover:underline">
             Criar conta
           </Link>
         </p>

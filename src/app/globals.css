@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #071018;
+  --color-surface: #0c1720;
+  --color-raised: #101d27;
+  --color-fg: #f3f5f5;
+  --color-muted: #9ba6a7;
+  --color-line: rgba(174, 185, 187, 0.18);
+  --color-accent: #9db4ff;
+  --color-accent-strong: #c3d0ff;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+::selection {
+  background: rgba(157, 180, 255, 0.28);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}

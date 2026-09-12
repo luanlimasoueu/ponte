@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
 
 const BADGE_COLORS: Record<string, string> = {
-  mentor: "bg-violet-100 text-violet-800",
-  mentee: "bg-emerald-100 text-emerald-800",
-  company: "bg-amber-100 text-amber-800",
-  open_source: "bg-sky-100 text-sky-800",
-  evento: "bg-rose-100 text-rose-800",
-  vaga: "bg-amber-100 text-amber-800",
-  projeto: "bg-stone-100 text-stone-700",
-  pending: "bg-stone-100 text-stone-600",
-  active: "bg-emerald-100 text-emerald-800",
+  mentor: "border-accent/30 bg-accent/10 text-accent",
+  mentee: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
+  company: "border-amber-400/30 bg-amber-400/10 text-amber-300",
+  open_source: "border-sky-400/30 bg-sky-400/10 text-sky-300",
+  evento: "border-rose-400/30 bg-rose-400/10 text-rose-300",
+  vaga: "border-amber-400/30 bg-amber-400/10 text-amber-300",
+  projeto: "border-line bg-raised text-muted",
+  pending: "border-line bg-raised text-muted",
+  active: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
 };
 
 export const ROLE_LABELS: Record<string, string> = {
@@ -28,7 +28,7 @@ export const TYPE_LABELS: Record<string, string> = {
 export function Badge({ kind, label }: { kind: string; label?: string }) {
   return (
     <span
-      className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${BADGE_COLORS[kind] ?? "bg-stone-100 text-stone-700"}`}
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${BADGE_COLORS[kind] ?? "border-line bg-raised text-muted"}`}
     >
       {label ?? ROLE_LABELS[kind] ?? TYPE_LABELS[kind] ?? kind}
     </span>
@@ -44,7 +44,10 @@ export function SkillChips({ skills }: { skills: string }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {items.map((s) => (
-        <span key={s} className="rounded-md bg-stone-100 px-2 py-0.5 text-xs text-stone-700">
+        <span
+          key={s}
+          className="rounded border border-line bg-raised px-2 py-0.5 text-xs text-muted"
+        >
           {s}
         </span>
       ))}
@@ -54,9 +57,17 @@ export function SkillChips({ skills }: { skills: string }) {
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-xl border border-stone-200 bg-white p-5 shadow-sm ${className}`}>
+    <div className={`rounded-lg border border-line bg-surface p-5 ${className}`}>
       {children}
     </div>
+  );
+}
+
+export function Eyebrow({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">
+      {children}
+    </p>
   );
 }
 
@@ -64,10 +75,10 @@ export function Flash({ params }: { params: { msg?: string; error?: string } }) 
   if (!params.msg && !params.error) return null;
   return (
     <div
-      className={`mb-4 rounded-lg px-4 py-3 text-sm ${
+      className={`mb-4 rounded-md border px-4 py-3 text-sm ${
         params.error
-          ? "bg-red-50 text-red-800 border border-red-200"
-          : "bg-emerald-50 text-emerald-800 border border-emerald-200"
+          ? "border-red-400/30 bg-red-400/10 text-red-300"
+          : "border-emerald-400/30 bg-emerald-400/10 text-emerald-300"
       }`}
     >
       {params.error ?? params.msg}
@@ -76,14 +87,14 @@ export function Flash({ params }: { params: { msg?: string; error?: string } }) 
 }
 
 export function Empty({ children }: { children: ReactNode }) {
-  return <p className="text-sm text-stone-500 italic">{children}</p>;
+  return <p className="text-sm text-muted/70 italic">{children}</p>;
 }
 
 export const inputCls =
-  "w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200";
+  "w-full rounded-md border border-line bg-ink px-3 py-2 text-sm text-fg placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40";
 
 export const btnCls =
-  "inline-flex items-center justify-center rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-700 transition-colors cursor-pointer";
+  "inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-strong transition-colors cursor-pointer";
 
 export const btnSecondaryCls =
-  "inline-flex items-center justify-center rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50 transition-colors cursor-pointer";
+  "inline-flex items-center justify-center rounded-md border border-line bg-transparent px-4 py-2 text-sm font-medium text-fg hover:border-fg/40 hover:bg-raised transition-colors cursor-pointer";

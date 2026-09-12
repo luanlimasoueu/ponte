@@ -81,7 +81,7 @@ function OpportunityEditor({ myOpps }: { myOpps: OppRow[] }) {
   return (
     <Card>
       <h2 className="font-semibold">Publicar oportunidade</h2>
-      <p className="mt-1 text-xs text-stone-500">
+      <p className="mt-1 text-xs text-muted">
         Projetos open source, eventos ou vagas — visiveis para toda a comunidade.
       </p>
       <form action={addOpportunity} className="mt-3 space-y-3">
@@ -100,13 +100,13 @@ function OpportunityEditor({ myOpps }: { myOpps: OppRow[] }) {
       {myOpps.length > 0 && (
         <ul className="mt-4 space-y-2">
           {myOpps.map((o) => (
-            <li key={o.id} className="flex items-center justify-between gap-3 rounded-lg bg-stone-50 px-3 py-2 text-sm">
+            <li key={o.id} className="flex items-center justify-between gap-3 rounded-lg bg-raised px-3 py-2 text-sm">
               <span>
                 <Badge kind={o.type} label={TYPE_LABELS[o.type]} /> {o.title}
               </span>
               <form action={deleteOpportunity}>
                 <input type="hidden" name="id" value={o.id} />
-                <button className="text-xs text-red-600 hover:underline">remover</button>
+                <button className="text-xs text-red-400 hover:underline">remover</button>
               </form>
             </li>
           ))}
@@ -119,16 +119,16 @@ function OpportunityEditor({ myOpps }: { myOpps: OppRow[] }) {
 function PendingRequests({ rows }: { rows: LinkRow[] }) {
   if (rows.length === 0) return null;
   return (
-    <Card className="border-violet-300">
+    <Card className="border-accent/50">
       <h2 className="font-semibold">Solicitacoes de mentoria</h2>
       <ul className="mt-3 space-y-3">
         {rows.map((r) => (
           <li key={r.mentorship_id} className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <Link href={`/pessoas/${r.id}`} className="font-medium text-violet-700 hover:underline">
+              <Link href={`/pessoas/${r.id}`} className="font-medium text-accent hover:underline">
                 {r.name}
               </Link>
-              <p className="text-sm text-stone-500">{r.headline}</p>
+              <p className="text-sm text-muted">{r.headline}</p>
               <SkillChips skills={r.skills} />
             </div>
             <form action={respondMentorship} className="flex gap-2">
@@ -160,14 +160,14 @@ function NetworkList({ rows, title, empty }: { rows: LinkRow[]; title: string; e
           {rows.map((r) => (
             <li key={r.mentorship_id} className="flex items-center justify-between gap-3">
               <div>
-                <Link href={`/pessoas/${r.id}`} className="font-medium text-violet-700 hover:underline">
+                <Link href={`/pessoas/${r.id}`} className="font-medium text-accent hover:underline">
                   {r.name}
                 </Link>
-                <p className="text-sm text-stone-500">{r.headline}</p>
+                <p className="text-sm text-muted">{r.headline}</p>
               </div>
               <form action={removeMentorship}>
                 <input type="hidden" name="id" value={r.mentorship_id} />
-                <button className="text-xs text-stone-400 hover:text-red-600">desconectar</button>
+                <button className="text-xs text-muted/60 hover:text-red-400">desconectar</button>
               </form>
             </li>
           ))}
@@ -237,9 +237,9 @@ export default async function DashboardPage({
                 empty="Ninguem na sua rede ainda. Aceite solicitacoes de mentoria."
               />
               {user.role === "company" && (
-                <Card className="bg-amber-50">
+                <Card className="border-amber-400/40 bg-amber-400/5">
                   <h2 className="font-semibold">Encontrar talentos</h2>
-                  <p className="mt-1 text-sm text-stone-600">
+                  <p className="mt-1 text-sm text-muted">
                     Busque mentorados por habilidade e veja contribuicoes reais recomendadas por mentores.
                   </p>
                   <Link href="/talentos" className={`${btnCls} mt-3`}>
@@ -266,16 +266,16 @@ export default async function DashboardPage({
                         </span>
                         <form action={removeMentorship}>
                           <input type="hidden" name="id" value={r.mentorship_id} />
-                          <button className="text-xs text-stone-400 hover:text-red-600">cancelar</button>
+                          <button className="text-xs text-muted/60 hover:text-red-400">cancelar</button>
                         </form>
                       </li>
                     ))}
                   </ul>
                 </Card>
               )}
-              <Card className="bg-violet-50">
+              <Card className="border-accent/40 bg-accent/5">
                 <h2 className="font-semibold">Encontrar mentores</h2>
-                <p className="mt-1 text-sm text-stone-600">
+                <p className="mt-1 text-sm text-muted">
                   Voce pode ter varios mentores, de areas diferentes.
                 </p>
                 <Link href="/mentores" className={`${btnCls} mt-3`}>
@@ -291,7 +291,7 @@ export default async function DashboardPage({
           {user.role === "mentee" ? (
             <Card>
               <h2 className="font-semibold">Minhas contribuicoes</h2>
-              <p className="mt-1 text-xs text-stone-500">
+              <p className="mt-1 text-xs text-muted">
                 Projetos, PRs, palestras e eventos — visiveis no seu perfil publico para empresas.
               </p>
               <form action={addContribution} className="mt-3 space-y-3">
@@ -310,18 +310,18 @@ export default async function DashboardPage({
               {myContribs.length > 0 && (
                 <ul className="mt-4 space-y-3">
                   {myContribs.map((c) => (
-                    <li key={c.id} className="rounded-lg bg-stone-50 px-3 py-2">
+                    <li key={c.id} className="rounded-lg bg-raised px-3 py-2">
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-sm font-medium">
                           <Badge kind={c.type} label={TYPE_LABELS[c.type] ?? c.type} /> {c.title}
                         </span>
                         <form action={deleteContribution}>
                           <input type="hidden" name="id" value={c.id} />
-                          <button className="text-xs text-stone-400 hover:text-red-600">remover</button>
+                          <button className="text-xs text-muted/60 hover:text-red-400">remover</button>
                         </form>
                       </div>
                       {c.endorsements > 0 && (
-                        <p className="mt-1 text-xs text-emerald-700">
+                        <p className="mt-1 text-xs text-emerald-400">
                           Recomendado por {c.endorsers}
                         </p>
                       )}
@@ -335,10 +335,10 @@ export default async function DashboardPage({
           )}
           <Card>
             <h2 className="font-semibold">Seu perfil publico</h2>
-            <p className="mt-1 text-sm text-stone-500">
+            <p className="mt-1 text-sm text-muted">
               Qualquer pessoa pode ver seu perfil, rede e contribuicoes.
             </p>
-            <Link href={`/pessoas/${user.id}`} className="mt-2 inline-block text-sm text-violet-700 hover:underline">
+            <Link href={`/pessoas/${user.id}`} className="mt-2 inline-block text-sm text-accent hover:underline">
               Ver meu perfil publico →
             </Link>
           </Card>

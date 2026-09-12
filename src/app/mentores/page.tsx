@@ -52,7 +52,7 @@ export default async function MentoresPage({
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Mentores e empresas</h1>
-        <p className="mt-1 text-stone-600">
+        <p className="mt-1 text-muted">
           Especialistas de diversas areas e empresas que mentoram talentos. Voce pode ter mais de um mentor.
         </p>
       </div>
@@ -78,10 +78,10 @@ export default async function MentoresPage({
               <Card key={m.id}>
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <Link href={`/pessoas/${m.id}`} className="font-semibold text-violet-700 hover:underline">
+                    <Link href={`/pessoas/${m.id}`} className="font-semibold text-accent hover:underline">
                       {m.name}
                     </Link>
-                    <p className="text-sm text-stone-500">{m.headline}</p>
+                    <p className="text-sm text-muted">{m.headline}</p>
                   </div>
                   <Badge kind={m.role} />
                 </div>
@@ -89,7 +89,7 @@ export default async function MentoresPage({
                   <SkillChips skills={m.skills} />
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xs text-stone-500">
+                  <span className="text-xs text-muted">
                     {m.mentees} {m.mentees === 1 ? "pessoa na rede" : "pessoas na rede"}
                   </span>
                   {user?.role === "mentee" &&
@@ -105,7 +105,7 @@ export default async function MentoresPage({
                       </form>
                     ))}
                   {!user && (
-                    <Link href="/login" className="text-sm text-violet-700 hover:underline">
+                    <Link href="/login" className="text-sm text-accent hover:underline">
                       Entre para solicitar
                     </Link>
                   )}

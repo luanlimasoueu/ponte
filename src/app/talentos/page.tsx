@@ -40,7 +40,7 @@ export default async function TalentosPage({
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Talentos</h1>
-        <p className="mt-1 text-stone-600">
+        <p className="mt-1 text-muted">
           Pessoas em inicio de carreira ou transicao com contribuicoes reais — muitas recomendadas
           pelos proprios mentores.
         </p>
@@ -62,16 +62,16 @@ export default async function TalentosPage({
         <div className="grid gap-4 sm:grid-cols-2">
           {mentees.map((t) => (
             <Card key={t.id}>
-              <Link href={`/pessoas/${t.id}`} className="font-semibold text-violet-700 hover:underline">
+              <Link href={`/pessoas/${t.id}`} className="font-semibold text-accent hover:underline">
                 {t.name}
               </Link>
-              <p className="text-sm text-stone-500">{t.headline}</p>
+              <p className="text-sm text-muted">{t.headline}</p>
               <div className="mt-3">
                 <SkillChips skills={t.skills} />
               </div>
-              <div className="mt-4 flex gap-4 text-xs text-stone-500">
+              <div className="mt-4 flex gap-4 text-xs text-muted">
                 <span>{t.contributions} contribuicoes</span>
-                <span className={t.endorsements > 0 ? "font-medium text-emerald-700" : ""}>
+                <span className={t.endorsements > 0 ? "font-medium text-emerald-400" : ""}>
                   {t.endorsements} recomendacoes
                 </span>
                 <span>{t.mentors} mentores</span>

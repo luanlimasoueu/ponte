@@ -88,7 +88,7 @@ export default async function PessoaPage({
               <h1 className="text-2xl font-bold">{profile.name}</h1>
               <Badge kind={profile.role} />
             </div>
-            <p className="mt-1 text-stone-600">{profile.headline}</p>
+            <p className="mt-1 text-muted">{profile.headline}</p>
           </div>
           {viewer?.role === "mentee" &&
             isMentorSide &&
@@ -104,12 +104,12 @@ export default async function PessoaPage({
               </form>
             ))}
         </div>
-        {profile.bio && <p className="mt-4 text-sm text-stone-700">{profile.bio}</p>}
+        {profile.bio && <p className="mt-4 text-sm text-fg/85">{profile.bio}</p>}
         <div className="mt-4">
           <SkillChips skills={profile.skills} />
         </div>
         {viewer && (
-          <p className="mt-4 text-sm text-stone-500">
+          <p className="mt-4 text-sm text-muted">
             Contato: <span className="font-mono">{profile.email}</span>
           </p>
         )}
@@ -125,12 +125,12 @@ export default async function PessoaPage({
           ) : (
             <ul className="mt-4 space-y-4">
               {contributions.map((c) => (
-                <li key={c.id} className="border-b border-stone-100 pb-4 last:border-0 last:pb-0">
+                <li key={c.id} className="border-b border-line pb-4 last:border-0 last:pb-0">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-medium">
                       <Badge kind={c.type} label={TYPE_LABELS[c.type] ?? c.type} />{" "}
                       {c.url ? (
-                        <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-violet-700 hover:underline">
+                        <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
                           {c.title} ↗
                         </a>
                       ) : (
@@ -144,8 +144,8 @@ export default async function PessoaPage({
                         <button
                           className={`rounded-lg px-3 py-1 text-xs font-medium cursor-pointer ${
                             c.endorsedByMe
-                              ? "bg-emerald-100 text-emerald-800 hover:bg-emerald-200"
-                              : "border border-stone-300 text-stone-600 hover:bg-stone-50"
+                              ? "border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 hover:bg-emerald-400/20"
+                              : "border border-line text-muted hover:text-fg hover:bg-raised"
                           }`}
                         >
                           {c.endorsedByMe ? "✓ Recomendado" : "Recomendar"}
@@ -153,9 +153,9 @@ export default async function PessoaPage({
                       </form>
                     )}
                   </div>
-                  {c.description && <p className="mt-1 text-sm text-stone-600">{c.description}</p>}
+                  {c.description && <p className="mt-1 text-sm text-muted">{c.description}</p>}
                   {c.endorsers && (
-                    <p className="mt-1 text-xs font-medium text-emerald-700">
+                    <p className="mt-1 text-xs font-medium text-emerald-400">
                       Recomendado por {c.endorsers}
                     </p>
                   )}
@@ -178,10 +178,10 @@ export default async function PessoaPage({
               <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                 {network.map((n) => (
                   <li key={n.id}>
-                    <Link href={`/pessoas/${n.id}`} className="font-medium text-violet-700 hover:underline">
+                    <Link href={`/pessoas/${n.id}`} className="font-medium text-accent hover:underline">
                       {n.name}
                     </Link>
-                    <p className="text-xs text-stone-500">{n.headline}</p>
+                    <p className="text-xs text-muted">{n.headline}</p>
                   </li>
                 ))}
               </ul>
@@ -195,7 +195,7 @@ export default async function PessoaPage({
                   <li key={o.id} className="text-sm">
                     <Badge kind={o.type} label={TYPE_LABELS[o.type]} />{" "}
                     <span className="font-medium">{o.title}</span>
-                    {o.description && <p className="mt-0.5 text-stone-600">{o.description}</p>}
+                    {o.description && <p className="mt-0.5 text-muted">{o.description}</p>}
                   </li>
                 ))}
               </ul>

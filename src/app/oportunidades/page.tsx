@@ -44,7 +44,7 @@ export default async function OportunidadesPage({
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Oportunidades</h1>
-        <p className="mt-1 text-stone-600">
+        <p className="mt-1 text-muted">
           Projetos open source, eventos e vagas publicados por mentores e empresas da comunidade.
         </p>
       </div>
@@ -56,8 +56,8 @@ export default async function OportunidadesPage({
             href={f.key ? `/oportunidades?type=${f.key}` : "/oportunidades"}
             className={`rounded-lg px-3 py-1.5 text-sm font-medium ${
               type === f.key
-                ? "bg-violet-600 text-white"
-                : "border border-stone-300 bg-white text-stone-600 hover:bg-stone-50"
+                ? "bg-accent text-ink"
+                : "border border-line bg-transparent text-muted hover:text-fg hover:bg-raised"
             }`}
           >
             {f.label}
@@ -76,19 +76,19 @@ export default async function OportunidadesPage({
                   <Badge kind={o.type} label={TYPE_LABELS[o.type]} />{" "}
                   <span className="font-semibold">{o.title}</span>
                 </div>
-                <span className="text-xs text-stone-400">
+                <span className="text-xs text-muted/60">
                   {new Date(o.created_at + "Z").toLocaleDateString("pt-BR")}
                 </span>
               </div>
-              {o.description && <p className="mt-2 text-sm text-stone-600">{o.description}</p>}
+              {o.description && <p className="mt-2 text-sm text-muted">{o.description}</p>}
               {o.skills && (
                 <div className="mt-3">
                   <SkillChips skills={o.skills} />
                 </div>
               )}
-              <p className="mt-3 text-xs text-stone-500">
+              <p className="mt-3 text-xs text-muted">
                 Publicado por{" "}
-                <Link href={`/pessoas/${o.owner_id}`} className="text-violet-700 hover:underline">
+                <Link href={`/pessoas/${o.owner_id}`} className="text-accent hover:underline">
                   {o.owner_name}
                 </Link>{" "}
                 · <Badge kind={o.owner_role} />
